@@ -8,6 +8,8 @@ package megatron;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -29,9 +31,12 @@ public class Megatron {
                     try {
                         ionCanons.add(new Socket(HOST_COLLEGE, PORT));
                         while(true) {
+                            Thread.sleep(1000);
                         }
                     } catch (IOException ex) {
                         System.err.println("Error al cargar. ionCanons.add-> fail" + ex.getMessage());
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Megatron.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }).start();
